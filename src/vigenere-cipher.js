@@ -12,7 +12,7 @@ class VigenereCipheringMachine {
             j = 0;
     
         input = input.toUpperCase();
-        key = key.repeat(Math.ceil(input.match(/[A-Z]/g).length / key.length)).toUpperCase();
+        key = key.repeat(Math.ceil(input.match(/[a-z]/gi).length / key.length)).toUpperCase();
     
         for (let i =0; i < input.length; i++) {
             if (input[i].match(/[a-z]/gi)) {
@@ -41,7 +41,7 @@ class VigenereCipheringMachine {
         key = key.repeat(Math.ceil(encryptedMessage.match(/[a-z]/gi).length / key.length)).toUpperCase();
     
         for (let i =0; i < encryptedMessage.length; i++) {
-            if (encryptedMessage[i].match(/[A-Z]/g)) {
+            if (encryptedMessage[i].match(/[a-z]/gi)) {
                 if (alphabet.indexOf(encryptedMessage[i]) - alphabet.indexOf(key[j]) < 0) {
                     res.push(alphabet[alphabet.indexOf(encryptedMessage[i]) - alphabet.indexOf(key[j]) + 26]);
                 } else {
