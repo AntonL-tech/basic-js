@@ -4,7 +4,7 @@ class VigenereCipheringMachine {
       }
 
     encrypt(input, key) {
-        if (!input || !key) {
+        if (!input || !key || input.length <= 0 || key.length <= 0) {
             throw new Error();
         }
         let alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
@@ -30,14 +30,13 @@ class VigenereCipheringMachine {
     }
 
     decrypt(encryptedMessage, key) {
-        if (!encryptedMessage || !key) {
+        if (!encryptedMessage || !key || encryptedMessage.length <= 0 || key.length <= 0) {
             throw new Error();
         }
         let alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
         let res = [],
             j = 0;
     
-        encryptedMessage = encryptedMessage.toUpperCase();
         key = key.repeat(Math.ceil(encryptedMessage.match(/[a-z]/gi).length / key.length)).toUpperCase();
     
         for (let i =0; i < encryptedMessage.length; i++) {
